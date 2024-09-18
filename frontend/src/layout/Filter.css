@@ -1,0 +1,49 @@
+.filters {
+    gap: 10px;
+    margin: 10px 10px;
+}
+
+.filter-input, .filter-input select {
+    width: 145px;
+    padding: 6px;
+    margin: 5px 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.filter .search-form .search-input {
+    width: 400px;
+    background-color: #ffffff;
+    display: inline-block;
+    gap: 10px;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 20px;
+    margin-top: 10px;
+} 
+
+.filter input {
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 130px;
+    background-color: #ffffff;
+}
+
+.filter .search-form .search-button {
+    padding: 5px 12px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: #272e36;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter .search-button:hover {
+    background-color: #44505e;
+}

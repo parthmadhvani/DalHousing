@@ -1,0 +1,48 @@
+/* FullScreenImage.css */
+
+.fullscreen-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .fullscreen-container.fullscreen {
+    opacity: 1;
+  }
+  
+  .image-wrapper {
+    position: relative;
+  }
+  
+  .fullscreen-image {
+    max-width: 90vw;
+    max-height: 90vh;
+    cursor: pointer;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #333;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  

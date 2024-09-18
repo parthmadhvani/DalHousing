@@ -1,0 +1,32 @@
+.footer {
+    position: static;
+    /* z-index: 21; */
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 20px 0;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 5px 5px 40px rgba(0, 0, 0, 0.2);
+}
+
+.footer-content {
+    z-index: 100;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    font-weight: bold;
+}
+
+.footer a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}

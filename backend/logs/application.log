@@ -1,0 +1,48 @@
+2024-07-27 18:38:39 INFO  c.d.h.HousingeaseApplication - Starting HousingeaseApplication using Java 17.0.10 with PID 5552 (C:\Users\hp\Desktop\CSCI 5308 ASDC\Group Project\group05\backend\target\classes started by hp in C:\Users\hp\Desktop\CSCI 5308 ASDC\Group Project\group05\backend)
+2024-07-27 18:38:39 INFO  c.d.h.HousingeaseApplication - No active profile set, falling back to 1 default profile: "default"
+2024-07-27 18:38:40 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-27 18:38:41 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 152 ms. Found 8 JPA repository interfaces.
+2024-07-27 18:38:42 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-07-27 18:38:42 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-07-27 18:38:42 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-07-27 18:38:42 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-07-27 18:38:42 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-07-27 18:38:42 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2723 ms
+2024-07-27 18:38:42 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-27 18:38:42 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-27 18:38:42 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-07-27 18:38:43 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-27 18:38:43 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-07-27 18:38:44 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2336cd91
+2024-07-27 18:38:44 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-07-27 18:38:44 WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-07-27 18:38:44 WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-27 18:38:46 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-27 18:38:47 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-27 18:38:48 INFO  c.d.h.c.ApplicationConfiguration - ApplicationConfiguration initialized with UserRepository
+2024-07-27 18:38:48 INFO  c.d.h.c.ApplicationConfiguration - Attempting to load user by email: {}
+2024-07-27 18:38:48 INFO  c.dal.housingease.config.WebConfig - Configuring CORS settings
+2024-07-27 18:38:48 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-27 18:38:48 INFO  c.d.h.service.AdminMailService - AdminMailService initialized
+2024-07-27 18:38:49 INFO  c.d.h.c.ApplicationConfiguration - Creating BCryptPasswordEncoder bean
+2024-07-27 18:38:49 INFO  c.d.h.security.SecurityConfiguration - SecurityConfiguration initialized with JwtAuthenticationFilter and AuthenticationProvider
+2024-07-27 18:38:49 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-07-27 18:38:49 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-07-27 18:38:49 INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-07-27 18:38:50 INFO  c.d.h.config.ModelMapperConfig - Creating ModelMapper bean
+2024-07-27 18:38:50 INFO  c.dal.housingease.config.WebConfig - Adding CORS mappings
+2024-07-27 18:38:50 INFO  c.dal.housingease.config.WebConfig - CORS mappings configured: allowedOrigins=http://localhost:3000, allowedMethods=GET, POST, PUT, DELETE, OPTIONS, allowedHeaders=*, allowCredentials=true
+2024-07-27 18:38:51 INFO  c.d.h.security.SecurityConfiguration - Configuring security filter chain
+2024-07-27 18:38:51 INFO  c.d.h.security.SecurityConfiguration - Security filter chain configured successfully
+2024-07-27 18:38:51 INFO  c.d.h.security.SecurityConfiguration - Configuring CORS settings
+2024-07-27 18:38:51 INFO  c.d.h.security.SecurityConfiguration - CORS settings configured successfully
+2024-07-27 18:38:51 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4461cce7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@37899044, org.springframework.security.web.context.SecurityContextHolderFilter@56677422, org.springframework.security.web.header.HeaderWriterFilter@44e0a1ce, org.springframework.web.filter.CorsFilter@23277696, org.springframework.security.web.authentication.logout.LogoutFilter@576eac92, com.dal.housingease.config.JwtAuthenticationFilter@273e622f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4a767290, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@15d0cd8c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@23cde615, org.springframework.security.web.session.SessionManagementFilter@3ec69823, org.springframework.security.web.access.ExceptionTranslationFilter@71a3205, org.springframework.security.web.access.intercept.AuthorizationFilter@71604f60]
+2024-07-27 18:38:51 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-07-27 18:38:51 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-07-27 18:38:51 INFO  c.d.h.HousingeaseApplication - Started HousingeaseApplication in 13.36 seconds (process running for 14.59)
+2024-07-27 18:38:51 INFO  c.d.h.HousingeaseApplication - HousingeaseApplication started successfully.
+2024-07-27 18:39:02 INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-07-27 18:39:02 INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-07-27 18:39:02 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-27 18:39:02 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-07-27 18:39:02 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

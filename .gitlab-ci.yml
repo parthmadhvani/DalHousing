@@ -1,0 +1,126 @@
+stages:
+  - build
+  - test
+  - publish
+  - deploy_on_vm
+
+backend_build:
+  image: maven:latest
+  stage: build
+  tags:
+    - dalfcs_docker_autoscale
+  script:
+    - cd backend/
+    - mvn clean package
+  artifacts:
+    paths:
+      - backend/target
+  only:
+    - main
+    - develop
+
+frontend_build:
+  image: node:latest
+  stage: build
+  tags:
+    - dalfcs_docker_autoscale
+  script:
+    - echo "Building Frontend Application..."
+    - cd frontend
+    - npm install
+    - npm run build
+    - ls -a
+    - echo "Frontend Build Complete"
+  artifacts:
+    paths:
+      - frontend/build
+  only:
+    - main
+    - develop
+
+test:
+  image: maven:latest
+  stage: test
+  tags:
+    - dalfcs_docker_autoscale
+  script:
+    - echo "Backend Testing Started..."
+    - cd backend
+    - mvn test
+    - echo "Backend Testing Complete"
+  only:
+    - main
+    - develop
+
+publish:
+
+  image: docker:20
+  stage: publish
+  tags:
+    - dalfcs_docker_kvm
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
+  services:
+    - name : docker:20-dind
+      alias : docker
+      command : ["--tls=false"]
+  script:
+    - pwd
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PWD
+    - cd backend/
+    - docker info
+    - docker build -t docker.io/kenilkevadiya/backend .
+    - docker push docker.io/kenilkevadiya/backend
+    - pwd
+    - cd ..
+    - cd frontend/
+    - docker build -t docker.io/kenilkevadiya/frontend .
+    - docker push docker.io/kenilkevadiya/frontend
+  only:
+    - main
+
+backend_deploy:
+  image: alpine:latest
+  stage: deploy_on_vm
+  tags:
+    - dalfcs_docker_autoscale
+  script:
+    - cd backend/
+    - echo "Deploying Backend..."
+    - apk update && apk add openssh-client sshpass
+    - sudo apt-get install sshpass || true
+    - which ssh || true
+    - which sshpass || true
+
+    - sshpass -p $VM_PASSWORD ssh -o StrictHostKeyChecking=no student@$SERVER_NAME "echo $VM_PASSWORD | sudo -S docker login -u $DOCKER_USERNAME -p $DOCKER_PWD docker.io"
+    - sshpass -p $VM_PASSWORD ssh -o StrictHostKeyChecking=no student@$SERVER_NAME "echo $VM_PASSWORD | sudo -S docker pull docker.io/$DOCKER_USERNAME/backend"
+    - sshpass -p $VM_PASSWORD ssh -o StrictHostKeyChecking=no student@$SERVER_NAME "echo $VM_PASSWORD | sudo -S docker container rm -f backend || true"
+    - sshpass -p $VM_PASSWORD ssh -o StrictHostKeyChecking=no student@$SERVER_NAME "echo $VM_PASSWORD | sudo -S docker run -d -p 8080:8080 --name backend docker.io/$DOCKER_USERNAME/backend"
+    - sshpass -p $VM_PASSWORD ssh -o StrictHostKeyChecking=no student@$SERVER_NAME "echo $VM_PASSWORD | sudo -S docker images -a"
+    - sshpass -p $VM_PASSWORD ssh -o StrictHostKeyChecking=no student@$SERVER_NAME "echo $VM_PASSWORD | sudo -S docker container ls -a"
+  only:
+    - main
+
+frontend_deploy:
+  image: alpine:latest
+  stage: deploy_on_vm
+  tags:
+    - dalfcs_docker_autoscale
+  script:
+    - cd backend/
+    - echo "Deploying Backend..."
+    - apk update && apk add openssh-client sshpass
+    - sudo apt-get install sshpass || true
+    - which ssh || true
+    - which sshpass || true
+
+    - sshpass -p $VM_PASSWORD ssh -o StrictHostKeyChecking=no student@$SERVER_NAME "echo $VM_PASSWORD | sudo -S docker login -u $DOCKER_USERNAME -p $DOCKER_PWD docker.io"
+    - sshpass -p $VM_PASSWORD ssh -o StrictHostKeyChecking=no student@$SERVER_NAME "echo $VM_PASSWORD | sudo -S docker pull docker.io/$DOCKER_USERNAME/frontend"
+    - sshpass -p $VM_PASSWORD ssh -o StrictHostKeyChecking=no student@$SERVER_NAME "echo $VM_PASSWORD | sudo -S docker container rm -f backend || true"
+    - sshpass -p $VM_PASSWORD ssh -o StrictHostKeyChecking=no student@$SERVER_NAME "echo $VM_PASSWORD | sudo -S docker run -d -p 3000:3000 --name frontend docker.io/$DOCKER_USERNAME/frontend"
+    - sshpass -p $VM_PASSWORD ssh -o StrictHostKeyChecking=no student@$SERVER_NAME "echo $VM_PASSWORD | sudo -S docker images -a"
+    - sshpass -p $VM_PASSWORD ssh -o StrictHostKeyChecking=no student@$SERVER_NAME "echo $VM_PASSWORD | sudo -S docker container ls -a"
+  only:
+    - main

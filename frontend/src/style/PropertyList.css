@@ -1,0 +1,36 @@
+.property-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    /* padding: 20px; */
+    justify-content: center;
+    min-height: 500px;
+}
+
+.sort-controls select {
+    width: 200px;
+    padding: 6px;
+    margin: 0px 530px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    padding: 3px 10px;
+    margin: 0 3px;
+    border: 1px solid #cdcdcd;
+    background-color: #c2c2c2;
+    cursor: pointer;
+}
+
+.pagination button.active {
+    background-color: #1f262e;
+    color: white;
+}
