@@ -4,7 +4,7 @@ pipeline {
     tools {
         // Specify the JDK and Maven installations
         jdk 'java' // Replace with your JDK installation name
-        maven 'maven' // Replace with your Maven installation name...
+        maven 'maven' // Replace with your Maven installation name....
     }
 
     environment {
