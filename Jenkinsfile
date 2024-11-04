@@ -15,7 +15,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Checking out code from the repository...'
-                // git 'https://github.com/your-repo/your-java-project.git' // Uncomment this line when ready to use
+                git 'https://github.com/parthmadhvani/DalHousing.git' // Uncomment this line when ready to use
             }
         }
         
