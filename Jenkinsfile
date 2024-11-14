@@ -62,7 +62,7 @@
 //             echo 'Build failed!'
 //         }
 //     }
-// }
+// }.
 
 pipeline {
     agent any
