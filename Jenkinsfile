@@ -68,10 +68,8 @@ pipeline {
     agent any
 
     tools {
-        // Specify the Maven version installed in Jenkins
-        maven 'maven'  // Replace with your configured Maven tool name
-        // Specify the SonarScanner tool configured in Jenkins
-        sonarQube 'sonar'  // Replace with your configured SonarScanner tool name
+        maven 'maven'  
+        hudson.plugins.sonar.SonarRunnerInstallation 'sonar'  
     }
 
     stages {
@@ -83,7 +81,6 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Use Maven to clean and build the project
                 sh 'mvn clean install'
             }
         }
@@ -91,9 +88,8 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script {
-                    // Set up SonarScanner for analysis
-                    def scannerHome = tool 'sonar'  // Replace with your configured SonarScanner tool name
-                    withSonarQubeEnv('sonar') {  // Replace 'SonarQube' with your server name
+                    def scannerHome = tool 'sonar' 
+                    withSonarQubeEnv('sonar') {  
                         sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=DalHousing -Dsonar.sources=src -Dsonar.host.url=http://192.168.4.30:9000 -Dsonar.login=squ_da16511a0007e20ed0aa5904449f810d6d9560af"
                     }
                 }
