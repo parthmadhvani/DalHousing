@@ -17,7 +17,7 @@ node {
     stage('SonarQube Analysis') {
         def mvn = tool 'maven'  // Replace 'maven' with your configured Maven tool name
         dir('backend') {  // Change to the directory containing your pom.xml
-            withSonarQubeEnv('SonarQube') {  // Replace 'SonarQube' with your configured SonarQube server name
+            withSonarQubeEnv('sonar') {  // Replace 'SonarQube' with your configured SonarQube server name
                 sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=DalHousing -Dsonar.projectName='DalHousing' -Dsonar.sources=src -Dsonar.host.url=http://192.168.4.30:9000 -Dsonar.login=squ_da16511a0007e20ed0aa5904449f810d6d9560af"
             }
         }
